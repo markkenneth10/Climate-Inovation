@@ -1030,6 +1030,9 @@ async function loadCMSData() {
     }
   }
 
+  // Animation Toggle
+  document.getElementById('cms-enable-animation').checked = config.enableNatureAnimations || false;
+
   // Response Protocol
   const protocol = config.responseProtocol || [];
   for (let i = 1; i <= 3; i++) {
@@ -1147,6 +1150,7 @@ async function handleSaveCMS(e) {
     whyCreated: document.getElementById('cms-why-created').value.trim(),
     whoCreated: document.getElementById('cms-who-created').value.trim(),
     contactPartners: document.getElementById('cms-partners').value.trim(),
+    enableNatureAnimations: document.getElementById('cms-enable-animation').checked,
 
     climateInformation: [],
     responseProtocol: []

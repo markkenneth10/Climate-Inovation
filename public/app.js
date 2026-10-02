@@ -1266,6 +1266,7 @@ function applyConfigUI(c) {
  // Website Name & Subtitle across all views
  const siteName = c.websiteName || 'Climate Action';
  const siteSub = c.websiteSubtitle || 'Reporting & Information System • Metro Verde';
+  renderNatureAnimations(c.enableNatureAnimations);
 
  const brandEl = document.getElementById('site-brand-name');
  if (brandEl) brandEl.textContent = siteName;
@@ -2572,4 +2573,20 @@ function getDefaultInfoCardImage(idx) {
     'https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=600&q=80'
   ];
   return defaults[idx] || defaults[0];
+}
+
+function renderNatureAnimations(enabled) {
+  const container = document.querySelector(".animated-bg-container");
+  if (!container) return;
+  container.innerHTML = "";
+  if (!enabled) return;
+
+  for(let i=0; i<20; i++) {
+    const el = document.createElement("div");
+    el.className = Math.random() > 0.5 ? "particle" : "leaf";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.animationDuration = (Math.random() * 10 + 10) + "s";
+    el.style.animationDelay = Math.random() * 10 + "s";
+    container.appendChild(el);
+  }
 }
