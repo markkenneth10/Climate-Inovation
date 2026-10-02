@@ -7,7 +7,22 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const crypto = require('crypto');
-const supabaseClient = require('./supabaseClient');
+
+const supabaseClient = {
+  saveUserToSupabase: async () => ({ success: false }),
+  updateUserInSupabase: async () => ({ success: false }),
+  syncConfigToSupabase: async () => ({ success: false }),
+  saveReportToSupabase: async () => ({ success: false }),
+  updateReportInSupabase: async () => ({ success: false }),
+  fetchConfigFromSupabase: async () => null,
+  fetchReportsFromSupabase: async () => null,
+  fetchUsersFromSupabase: async () => null,
+  uploadBase64Image: async () => ({ success: false }),
+  getStatus: () => ({ configured: false, connected: false }),
+  testConnection: async () => ({ connected: false }),
+  saveCredentials: () => ({ success: false }),
+  SQL_SCHEMA_SCRIPT: ''
+};
 
 const PORT = (process.env.PORT && process.env.PORT !== '8080') ? process.env.PORT : (process.env.APP_PORT || 3000);
 const USER_PUBLIC_DIR = path.join(__dirname, 'public');
